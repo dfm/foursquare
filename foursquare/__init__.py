@@ -703,8 +703,8 @@ def _request_with_retry(url, data=None):
 
 def _process_request_with_httplib2(url, data=None):
     """Make the request and handle exception processing"""
-    ca_certs = os.path.join(os.path.dirname(os.path.abspath(__file__ ),
-                            'cacerts.txt'))
+    ca_certs = os.path.join(os.path.dirname(os.path.abspath(__file__ )),
+                            'cacerts.txt')
     h = httplib2.Http(ca_certs=ca_certs)
     try:
         if data:
