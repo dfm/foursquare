@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 # (c) 2012 Mike Lewis
+import os
 import logging; log = logging.getLogger(__name__)
 
 try:
@@ -702,7 +703,9 @@ def _request_with_retry(url, data=None):
 
 def _process_request_with_httplib2(url, data=None):
     """Make the request and handle exception processing"""
-    h = httplib2.Http()
+    ca_certs = os.path.join(os.path.dirname(os.path.abspath(__file__ ),
+                            'cacerts.txt'))
+    h = httplib2.Http(ca_certs=ca_certs)
     try:
         if data:
             datagen, headers = poster.encode.multipart_encode(data)
